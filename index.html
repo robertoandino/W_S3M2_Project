@@ -27,7 +27,19 @@
     // 🧠 Examples of usage:
     // processSingleLearner({ name: "Elisabeth", lovesJS: 1 }) // should return { name: "Elisabeth", lovesJS: true }
     // processSingleLearner({ name: "Pete", age: 23, lovesJS: 0 }) // should return { name: "Pete", age: 23, lovesJS: false }
-    const processSingleLearner = () => {
+    const processSingleLearner = (learner) => {
+
+      if(learner.lovesJS === 0){
+      
+        learner.lovesJS = false
+      
+      }else if(learner.lovesJS === 1){
+
+        learner.lovesJS = true
+
+      }
+
+      return learner
 
     }
 
@@ -41,7 +53,22 @@
     // ❗ Notes:
     // 🧠 There are many approaches to this problem: using a loop, using forEach, using map...
     // 🧠 Solve this challenge using a for/in loop or a for loop.
-    const processLearnersLoop = () => {
+    const processLearnersLoop = (arr) => {
+ 
+
+      for(let property in arr){
+      
+        let index = arr[property]
+
+        if(index.lovesJS === 0){
+          index.lovesJS = false
+        }else if(index.lovesJS === 1){
+          index.lovesJS = true
+        }
+
+      }
+
+      return arr
 
     }
 
@@ -51,7 +78,21 @@
     // ❗ Notes:
     // 🧠 Solve this challenge using the forEach method of the learners array.
     // 🧠 Use arrow functions whenever possible.
-    const processLearnerForEach = () => {
+    const processLearnerForEach = (arr) => {
+    
+      arr.forEach(function(arr2){
+
+        if(arr2['lovesJS'] === 0){
+          arr2['lovesJS'] = false
+        }else if(arr2['lovesJS'] === 1){
+          arr2['lovesJS'] = true
+        }
+
+      })
+
+      return arr      
+
+
 
     }
 
@@ -61,7 +102,12 @@
     // ❗ Notes:
     // 🧠 Solve this challenge using the map method of the learners array.
     // 🧠 Use arrow functions.
-    const processLearnerMap = () => {
+    const processLearnerMap = (learners) => {
+
+      let arr = learners.map(processSingleLearner)
+
+      return arr
+
 
     }
 
@@ -73,7 +119,24 @@
     // ❗ Notes:
     // 🧠 Solve this challenge using the forEach method of the learners array.
     // 🧠 You will need to declare a result array into which you push learners from inside your forEach loop.
-    const getJavaScriptLoversForEach = () => {
+    const getJavaScriptLoversForEach = (learners) => {
+
+      let arr = []
+
+      learners.forEach(function(learner){
+        
+        if(learner.lovesJS){
+          arr.push(learner)
+        }
+        
+      })
+
+      if(!arr.length){
+        return "no JS lovers here!"
+      }
+
+      return arr
+
 
     }
 
@@ -82,7 +145,15 @@
     // 🧠 It should work exactly the same as the getJavaScriptLoversForEach function above.
     // ❗ Notes:
     // 🧠 Solve this challenge using the filter method of the learners array.
-    const getJavaScriptLoversFilter = () => {
+    const getJavaScriptLoversFilter = (learners) => {
+
+      let arr = learners.filter(learner => learner.lovesJS)
+
+      if(!arr.length){
+        return "no JS lovers here!"
+      }
+
+      return arr
 
     }
 
@@ -98,7 +169,27 @@
     // ❗ Notes:
     // 🧠 This could be solved by using filter to make an array of odd integers, and then using forEach to add them up.
     // 🧠 Or you could opt for solving everything with a single forEach which is the recommended approach (saves a loop).
-    const sumOddInts = () => {
+    const sumOddInts = (arr) => {
+
+      let arr2 = []
+      let arr3 = []
+      let oddSum = 0
+      
+      for(let i = 0; i < arr.length; i++){
+        
+        if(arr[i] % 2 !== 0){
+          oddSum += arr[i]
+          arr3.push(arr[i])
+        }
+
+
+      }
+
+      arr2.push(oddSum)
+      arr2.push(arr3)
+
+      return arr2
+
 
     }
 
@@ -113,8 +204,27 @@
     // checkInts(2, 6) // should return ["even", "even"]
     // ❗ Notes:
     // 🧠 Solve this problem using rest parameters and map.
-    const checkInts = () => {
+    const checkInts = (...args) => {
 
+      let str = []
+
+      if(!args.length){
+        return "pass some arguments, yo!"
+      }
+    
+      for(let i = 0; i < args.length; i++)
+
+      if(args[i] % 2 === 0){
+
+        str.push('even')
+
+      }else{
+        str.push('odd')
+      }
+
+      
+    return str
+      
     }
 
     // 🧪 TESTS, do not work below this line
